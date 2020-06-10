@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf简单示例</title>
+</head>
+<body>
+<p style="background-color: #c7ddef">
+    ${...} 可以显示后台传输的变量<br>
+    当前登录用户名为：
+</p>
+<p th:text="${username}"></p>
+
+<p style="background-color: #ef312e">
+    单个对象获取数据
+</p>
+<p th:text="${userInfo.username}"></p>
+
+<p style="background-color: #c7ddef">
+    th:each循环标签
+</p>
+<!--<p th:each=" userobject : ${users}">
+    <span th:text="${userobject.username}"></span>
+</p>-->
+
+<!--
+<table>
+    <tr>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>生日</td>
+    </tr>
+    <tr th:each="user,memberStat:${users}">
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.sex}"></td>
+        <td th:text="${#dates.format(user.birthday,'yyyy-MM-dd HH:mm:ss')}"></td>
+    </tr>
+</table>
+-->
+
+
+<form action="#" th:action="@{/add}" th:object="${userInfo}" method="post">
+    <input th:field="*{username}" type="text"/><br>
+    <input th:field="*{password}" type="password">
+    <input type="submit"/>
+</form>
+</body>
+</html>

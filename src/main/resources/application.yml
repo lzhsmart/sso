@@ -1,0 +1,13 @@
+spring:
+  thymeleaf:
+    cache: false #\u5173\u95ED\u7F13\u5B58
+  datasource:
+    url: jdbc:mysql://localhost:3306/study?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
+  type-aliases-package: com.dm.sso.vo
+

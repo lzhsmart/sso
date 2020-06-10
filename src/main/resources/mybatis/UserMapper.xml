@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dm.sso.mapper.UserMapper">
+
+	<resultMap id="userRoleMap" type="com.dm.sso.vo.UserInfo">
+		<id column="id" property="id"/>
+		<result column="username" property="username"/>
+		<result column="password" property="password"/>
+		<collection property="roles" ofType="com.dm.sso.vo.Role">
+			<id column="rid" property="id"/>
+			<result column="role" property="role"/>
+		</collection>
+	</resultMap>
+
+	<select id="queryUserByUsername" resultMap="userRoleMap">
+        select
+        	user.id, user.username, user.password, role.id as rid, role.role
+        from
+        	user,user_roles,role
+        where
+        	user.username=#{username}
+        	and user.id = user_roles.user_id
+        	and role.id = user_roles.role_id
+    </select>
+</mapper>
