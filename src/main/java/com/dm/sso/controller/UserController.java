@@ -27,8 +27,6 @@ public class UserController
 	@Resource
 	private UserService userService;
 
-
-
 	@RequestMapping("getuser")
 	public UserInfo getUser(@RequestParam String username)
 	{
