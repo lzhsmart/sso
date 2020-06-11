@@ -1,5 +1,6 @@
 package com.dm.sso.controller;
 
+import com.dm.sso.aspect.ControllerLog;
 import com.dm.sso.service.UserService;
 import com.dm.sso.vo.UserInfo;
 import com.dm.sso.vo.UserRole;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 /**
  * <p>标题：</p>
  * <p>功能：</p>
@@ -27,6 +29,15 @@ public class UserController
 	@Resource
 	private UserService userService;
 
+	@ControllerLog
+	@RequestMapping("users")
+	public List<UserInfo> getAllUsers()
+	{
+		List<UserInfo> data = userService.queryAllUsers();
+		return data;
+	}
+
+	@ControllerLog
 	@RequestMapping("getuser")
 	public UserInfo getUser(@RequestParam String username)
 	{
@@ -34,6 +45,7 @@ public class UserController
 		return userInfo;
 	}
 
+	@ControllerLog
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute UserInfo userInfo)
 	{
@@ -45,6 +57,7 @@ public class UserController
 		return username + "__" + password;
 	}
 
+	@ControllerLog
 	@PostMapping("/setRoles")
 	public int setUserRoles(@RequestBody UserRole userRole)
 	{

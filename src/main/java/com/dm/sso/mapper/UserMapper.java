@@ -4,6 +4,9 @@ import com.dm.sso.vo.UserInfo;
 import com.dm.sso.vo.UserRole;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 /**
  * <p>标题：</p>
  * <p>功能：</p>
@@ -20,14 +23,33 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper
 {
-	// 查询用户
+	/**
+	 * 查询所有用户
+	 * @return
+	 */
+	@Select("select * from user")
+	List<UserInfo> queryAllUsers();
+
+	/**
+	 * 查询用户
+	 * @param username
+	 * @return
+	 */
 	UserInfo queryUserByUsername(String username);
 
-	// 插入用户
+	/**
+	 * 插入用户
+	 * @param userInfo
+	 * @return
+	 */
 	@Insert("insert into user(username, password) value(#{username}, #{password})")
 	int insertUserInfo(UserInfo userInfo);
 
-	// 插入用户角色
+	/**
+	 * 设置用户角色
+	 * @param userRole
+	 * @return
+	 */
 	@Insert("insert into user_roles(username, role) value(#{username}, #{role})")
 	int insertUserRoles(UserRole userRole);
 }

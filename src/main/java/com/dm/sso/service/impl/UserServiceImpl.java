@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 /**
  * <p>标题：</p>
  * <p>功能：</p>
@@ -28,6 +29,12 @@ public class UserServiceImpl implements UserService
 	private UserMapper      userMapper;
 	@Resource
 	private PasswordEncoder passwordEncoder;
+
+	@Override
+	public List<UserInfo> queryAllUsers()
+	{
+		return userMapper.queryAllUsers();
+	}
 
 	@Override
 	public UserInfo queryUserByUsername(String username)

@@ -2,6 +2,8 @@ package com.dm.sso.service;
 
 import com.dm.sso.vo.UserInfo;
 import com.dm.sso.vo.UserRole;
+
+import java.util.List;
 /**
  * <p>标题：</p>
  * <p>功能：</p>
@@ -19,9 +21,30 @@ public interface UserService
 {
 	String BeanName = "UserService";
 
+	/**
+	 * 获取所有用户
+	 * @return
+	 */
+	List<UserInfo> queryAllUsers();
+
+	/**
+	 * 根据用户名查询用户
+	 * @param username
+	 * @return
+	 */
 	UserInfo queryUserByUsername(String username);
 
+	/**
+	 * 新增用户
+	 * @param userInfo
+	 * @return
+	 */
 	int insertUser(UserInfo userInfo);
 
+	/**
+	 * 设置用户角色
+	 * @param userRole
+	 * @return
+	 */
 	int setUserRoles(UserRole userRole);
 }
