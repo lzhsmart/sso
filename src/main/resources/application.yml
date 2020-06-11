@@ -1,11 +1,11 @@
 spring:
   thymeleaf:
-    cache: false #\u5173\u95ED\u7F13\u5B58
+    cache: false #关闭缓存
   datasource:
     url: jdbc:mysql://localhost:3306/study?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: root
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis:
   mapper-locations: classpath:mybatis/*.xml
